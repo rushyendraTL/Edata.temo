@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Data Dashboard - Indicators Example</title>
+    <link rel="stylesheet" href="assets/css/attractive_bi.css">
+</head>
+<body>
+    <div class="dashboard-main-container">
+        <!-- Header Section -->
+        <div class="dashboard-header">
+            <h1>Vehicle Data Dashboard</h1>
+            <p>Comprehensive analytics and insights for vehicle inquiries</p>
+        </div>
+
+        <!-- Filter Bar Section -->
+        <div class="dashboard-filter-bar">
+            <!-- Your existing filter components would go here -->
+            <div style="color: white; padding: 1rem;">Filter Controls (Dropdowns, Date Pickers, etc.)</div>
+        </div>
+
+        <!-- Summary Indicators Box - This is the new section -->
+        <div class="dashboard-summary-box">
+            <div class="summary-indicators-container">
+                <!-- EV Percentage Indicator -->
+                <div class="indicator-card ev-percentage">
+                    <div class="indicator-value" id="ev-percentage-value">25.3%</div>
+                    <div class="indicator-label">EV Percentage</div>
+                </div>
+
+                <!-- Non-EV Percentage Indicator -->
+                <div class="indicator-card non-ev-percentage">
+                    <div class="indicator-value" id="non-ev-percentage-value">74.7%</div>
+                    <div class="indicator-label">Non-EV Percentage</div>
+                </div>
+
+                <!-- Top Make Indicator -->
+                <div class="indicator-card top-make">
+                    <div class="indicator-value" id="top-make-value">Toyota</div>
+                    <div class="indicator-label">Top Make (35.2%)</div>
+                </div>
+
+                <!-- Top Manufacturing Country Indicator -->
+                <div class="indicator-card top-country">
+                    <div class="indicator-value" id="top-country-value">Japan</div>
+                    <div class="indicator-label">Top Country (42.1%)</div>
+                </div>
+
+                <!-- Total Cars Indicator -->
+                <div class="indicator-card total-cars">
+                    <div class="indicator-value" id="total-cars-value">15,847</div>
+                    <div class="indicator-label">Total Cars</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Alternative: Plotly Indicators Layout -->
+        <!-- Use this structure if you want to display the plotly indicator figures -->
+        <!-- 
+        <div class="dashboard-summary-box">
+            <div class="summary-indicators-container">
+                <div class="indicator-card ev-percentage">
+                    <div class="plotly-indicator-container" id="ev-percentage-plotly"></div>
+                </div>
+                <div class="indicator-card non-ev-percentage">
+                    <div class="plotly-indicator-container" id="non-ev-percentage-plotly"></div>
+                </div>
+                <div class="indicator-card top-make">
+                    <div class="plotly-indicator-container" id="top-make-plotly"></div>
+                </div>
+                <div class="indicator-card top-country">
+                    <div class="plotly-indicator-container" id="top-country-plotly"></div>
+                </div>
+                <div class="indicator-card total-cars">
+                    <div class="plotly-indicator-container" id="total-cars-plotly"></div>
+                </div>
+            </div>
+        </div>
+        -->
+
+        <!-- Main Dashboard Grid -->
+        <div class="dashboard-custom-grid">
+            <!-- Your existing visualization cards -->
+            <div class="dashboard-card model-year-distribution">
+                <h3>Model Year Distribution</h3>
+                <div id="model-year-chart">Chart Content</div>
+            </div>
+            
+            <div class="dashboard-card model-year-distribution-bar">
+                <h3>Model Year Distribution (Bar)</h3>
+                <div id="model-year-bar-chart">Chart Content</div>
+            </div>
+            
+            <div class="dashboard-card model-year-trend">
+                <h3>Model Year Trend</h3>
+                <div id="model-year-trend-chart">Chart Content</div>
+            </div>
+            
+            <div class="dashboard-card top-10-makes">
+                <h3>Top 10 Makes</h3>
+                <div id="top-makes-chart">Chart Content</div>
+            </div>
+            
+            <div class="dashboard-card ev-composition">
+                <h3>EV Composition</h3>
+                <div id="ev-composition-chart">Chart Content</div>
+            </div>
+            
+            <div class="dashboard-card model-year-price">
+                <h3>Model Year Price Analysis</h3>
+                <div id="model-year-price-chart">Chart Content</div>
+            </div>
+            
+            <div class="dashboard-card ev-trend">
+                <h3>EV Trends</h3>
+                <div id="ev-trend-chart">Chart Content</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Example JavaScript to update indicator values dynamically
+        function updateIndicators(data) {
+            document.getElementById('ev-percentage-value').textContent = data.evPercentage + '%';
+            document.getElementById('non-ev-percentage-value').textContent = data.nonEvPercentage + '%';
+            document.getElementById('top-make-value').textContent = data.topMake;
+            document.getElementById('top-country-value').textContent = data.topCountry;
+            document.getElementById('total-cars-value').textContent = data.totalCars.toLocaleString();
+            
+            // Update labels with percentages
+            document.querySelector('.top-make .indicator-label').textContent = `Top Make (${data.topMakePercentage}%)`;
+            document.querySelector('.top-country .indicator-label').textContent = `Top Country (${data.topCountryPercentage}%)`;
+        }
+
+        // Example usage:
+        // updateIndicators({
+        //     evPercentage: 27.5,
+        //     nonEvPercentage: 72.5,
+        //     topMake: 'Honda',
+        //     topMakePercentage: 38.2,
+        //     topCountry: 'Germany',
+        //     topCountryPercentage: 45.1,
+        //     totalCars: 18423
+        // });
+    </script>
+</body>
+</html> 
